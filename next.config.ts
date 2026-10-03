@@ -8,7 +8,12 @@ const nextConfig: NextConfig = {
   // Image optimization
   images: {
     formats: ['image/avif', 'image/webp'],
-    domains: ['voidai.app'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'voidai.app',
+      },
+    ],
     minimumCacheTTL: 60,
   },
   
@@ -63,11 +68,6 @@ const nextConfig: NextConfig = {
     ];
   },
   
-  // Temporarily ignore existing ESLint errors to allow build
-  // TODO: Fix all ESLint errors in a separate PR
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   typescript: {
     // Skip TypeScript checks during build
     ignoreBuildErrors: true,
