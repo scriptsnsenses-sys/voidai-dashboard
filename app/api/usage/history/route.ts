@@ -43,7 +43,6 @@ export async function GET(req: NextRequest) {
       );
     }
 
-    const { combined } = profile;
     // Allow disabled users to view their history to understand usage
     /* if (!combined.enabled) {
       return NextResponse.json(
@@ -102,7 +101,7 @@ export async function GET(req: NextRequest) {
     const historyRaw: any[] = await prisma.$queryRaw`
       SELECT
         date_trunc(${truncInterval}, to_timestamp(created_at / 1000)) as timestamp,
-        SUM(credits_used) as "creditsUsed"
+        COUNT(*) as requests
       FROM api_requests
       WHERE user_id = ${userIdToUse}
         AND created_at >= ${startTimestamp}
@@ -114,8 +113,7 @@ export async function GET(req: NextRequest) {
     // Convert BigInts to numbers for JSON response
     const history = historyRaw.map(entry => ({
       timestamp: entry.timestamp instanceof Date ? entry.timestamp.toISOString() : new Date(entry.timestamp).toISOString(),
-      creditsUsed: typeof entry.creditsUsed === 'bigint' ? Number(entry.creditsUsed) : Number(entry.creditsUsed || 0),
-      plan: combined.plan
+      requests: Number(entry.requests || 0)
     }));
 
     // Fill in gaps if necessary (optional improvement)

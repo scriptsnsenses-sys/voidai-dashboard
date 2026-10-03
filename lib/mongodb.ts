@@ -14,27 +14,12 @@ const options = {
 };
 
 async function createV1Connection(connectionUri: string): Promise<MongoClient> {
-  while (true) {
-    try {
-      const client = new MongoClient(connectionUri, options);
-      await client.connect();
-      console.log('V1 Database connected successfully');
-      
-      // Handle connection events for reconnection
-      client.on('close', () => {
-        console.log('V1 Database connection closed, will retry...');
-      });
-      
-      client.on('error', (error) => {
-        console.error('V1 Database connection error:', error);
-      });
-      
-      return client;
-    } catch (error) {
-      console.error('V1 Database connection failed, retrying in 5 seconds...', error);
-      await new Promise(resolve => setTimeout(resolve, 5000));
-    }
-  }
+  const client = new MongoClient(connectionUri, options);
+  await client.connect();
+  console.log('V1 Database connected successfully');
+  client.on('close', () => console.log('V1 Database connection closed'));
+  client.on('error', (error) => console.error('V1 Database connection error:', error));
+  return client;
 }
 
 let clientPromise: Promise<MongoClient> | null = null;
@@ -54,10 +39,17 @@ export async function connectToDatabase() {
         let globalWithMongo = global as typeof globalThis & {
           _mongoClientPromise?: Promise<MongoClient>;
         };
-        clientPromise = globalWithMongo._mongoClientPromise ?? createV1Connection(uri as string);
+        clientPromise = globalWithMongo._mongoClientPromise ?? createV1Connection(uri).catch((error) => {
+          globalWithMongo._mongoClientPromise = undefined;
+          clientPromise = null;
+          throw error;
+        });
         globalWithMongo._mongoClientPromise = clientPromise;
       } else {
-        clientPromise = createV1Connection(uri as string);
+        clientPromise = createV1Connection(uri).catch((error) => {
+          clientPromise = null;
+          throw error;
+        });
       }
     }
     const client = await clientPromise;
@@ -69,34 +61,18 @@ export async function connectToDatabase() {
   }
 }
 
-// Infinite retry connection function for V2 database
 async function createV2Connection(): Promise<MongoClient> {
   const v2Uri = process.env.V2_MONGODB_URL;
   if (!v2Uri) {
     throw new Error('V2_MONGODB_URL environment variable is required');
   }
   
-  while (true) {
-    try {
-      const client = new MongoClient(v2Uri, options);
-      await client.connect();
-      console.log('V2 Database connected successfully');
-      
-      // Handle connection events for reconnection
-      client.on('close', () => {
-        console.log('V2 Database connection closed, will retry...');
-      });
-      
-      client.on('error', (error) => {
-        console.error('V2 Database connection error:', error);
-      });
-      
-      return client;
-    } catch (error) {
-      console.error('V2 Database connection failed, retrying in 5 seconds...', error);
-      await new Promise(resolve => setTimeout(resolve, 5000));
-    }
-  }
+  const client = new MongoClient(v2Uri, options);
+  await client.connect();
+  console.log('V2 Database connected successfully');
+  client.on('close', () => console.log('V2 Database connection closed'));
+  client.on('error', (error) => console.error('V2 Database connection error:', error));
+  return client;
 }
 
 // V2 database connection for PostgreSQL (Prisma wrapper)
@@ -123,10 +99,17 @@ export async function connectToV2MongoDB() {
         let globalWithV2Mongo = global as typeof globalThis & {
           _v2MongoClientPromise?: Promise<MongoClient>;
         };
-        v2MongoClientPromise = globalWithV2Mongo._v2MongoClientPromise ?? createV2Connection();
+        v2MongoClientPromise = globalWithV2Mongo._v2MongoClientPromise ?? createV2Connection().catch((error) => {
+          globalWithV2Mongo._v2MongoClientPromise = undefined;
+          v2MongoClientPromise = null;
+          throw error;
+        });
         globalWithV2Mongo._v2MongoClientPromise = v2MongoClientPromise;
       } else {
-        v2MongoClientPromise = createV2Connection();
+        v2MongoClientPromise = createV2Connection().catch((error) => {
+          v2MongoClientPromise = null;
+          throw error;
+        });
       }
     }
     const client = await v2MongoClientPromise;
@@ -140,33 +123,17 @@ export async function connectToV2MongoDB() {
 
 const usagesUri = process.env.USAGES_MONGODB_CONNECTION_STRING;
 
-// Infinite retry connection function for Usages database
 async function createUsagesConnection(): Promise<MongoClient> {
   if (!usagesUri) {
     throw new Error('USAGES_MONGODB_CONNECTION_STRING is required for usage data tracking');
   }
   
-  while (true) {
-    try {
-      const client = new MongoClient(usagesUri, options);
-      await client.connect();
-      console.log('Usages Database connected successfully');
-      
-      // Handle connection events for reconnection
-      client.on('close', () => {
-        console.log('Usages Database connection closed, will retry...');
-      });
-      
-      client.on('error', (error) => {
-        console.error('Usages Database connection error:', error);
-      });
-      
-      return client;
-    } catch (error) {
-      console.error('Usages Database connection failed, retrying in 5 seconds...', error);
-      await new Promise(resolve => setTimeout(resolve, 5000));
-    }
-  }
+  const client = new MongoClient(usagesUri, options);
+  await client.connect();
+  console.log('Usages Database connected successfully');
+  client.on('close', () => console.log('Usages Database connection closed'));
+  client.on('error', (error) => console.error('Usages Database connection error:', error));
+  return client;
 }
 
 let usagesClientPromise: Promise<MongoClient> | null = null;
@@ -184,10 +151,17 @@ export async function connectToUsagesDatabase() {
         let globalWithUsagesMongo = global as typeof globalThis & {
           _usagesMongoClientPromise?: Promise<MongoClient>;
         };
-        usagesClientPromise = globalWithUsagesMongo._usagesMongoClientPromise ?? createUsagesConnection();
+        usagesClientPromise = globalWithUsagesMongo._usagesMongoClientPromise ?? createUsagesConnection().catch((error) => {
+          globalWithUsagesMongo._usagesMongoClientPromise = undefined;
+          usagesClientPromise = null;
+          throw error;
+        });
         globalWithUsagesMongo._usagesMongoClientPromise = usagesClientPromise;
       } else {
-        usagesClientPromise = createUsagesConnection();
+        usagesClientPromise = createUsagesConnection().catch((error) => {
+          usagesClientPromise = null;
+          throw error;
+        });
       }
     }
     const client = await usagesClientPromise;

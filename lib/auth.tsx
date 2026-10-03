@@ -2,7 +2,6 @@
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
-import { deleteApiKey, getUserKeys } from './api';
 
 export interface User {
   id: string;
@@ -65,7 +64,6 @@ type AuthContextType = {
     message?: string;
     invalidToken?: boolean;
   }>;
-  checkPlanExpiration: () => Promise<boolean>;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -79,46 +77,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     getUserInfo();
   }, []);
-
-  const checkPlanExpiration = async (): Promise<boolean> => {
-    if (!currentUser || !currentUser.plan_expires_at) {
-      return false;
-    }
-
-    const expirationDate = new Date(parseInt(currentUser.plan_expires_at) * 1000);
-    const now = new Date();
-
-    if (expirationDate < now && currentUser.plan !== 'free') {
-      try {
-
-        const response = await fetch('/api/auth/update-expired-plan', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          credentials: 'include',
-        });
-
-        if (response.ok) {
-
-          const keys = await getUserKeys();
-          if (keys && keys.length > 0) {
-
-            for (const key of keys) {
-              await deleteApiKey(key._id);
-            }
-          }
-
-          await getUserInfo();
-          return true;
-        }
-      } catch (error) {
-        console.error('Error handling plan expiration:', error);
-      }
-    }
-
-    return false;
-  };
 
   const getUserInfo = async (): Promise<void> => {
     try {
@@ -143,10 +101,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
           plan_expires_at: data.plan_expires_at ? String(data.plan_expires_at) : null
         };
         setCurrentUser(user);
-
-        if (user && user.plan_expires_at) {
-          await checkPlanExpiration();
-        }
       } else if (response.status === 403 && window.location.pathname !== '/login' && window.location.pathname !== '/register') {
 
         const data = await response.json();
@@ -413,8 +367,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     verifyEmail,
     resendVerificationCode,
     requestPasswordReset,
-    resetPassword,
-    checkPlanExpiration
+    resetPassword
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

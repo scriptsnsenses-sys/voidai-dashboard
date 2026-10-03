@@ -131,7 +131,7 @@ export default function TermsOfService() {
                 <div className="text-white/80 leading-relaxed pl-11 space-y-4">
                   <p>When using our API, you agree to the following:</p>
                   <ul className="list-disc pl-5 space-y-2">
-                    <li><strong>Rate Limits:</strong> We expect that you will not exceed the rate limits specified for your plan tier.</li>
+                    <li><strong>Service Limits:</strong> We may apply technical limits to protect availability and prevent abuse.</li>
                     <li><strong>API Keys:</strong> You will keep your API keys secure and not share them with unauthorized parties</li>
                     <li><strong>Usage Monitoring:</strong> We monitor and track API usage data including timestamps, request counts, and rate limits for each account.</li>
                     <li><strong>IP Address Logging:</strong> We log IP addresses during registration and API usage to detect and prevent malicious activities, including spam accounts and abuse.</li>
@@ -152,20 +152,10 @@ export default function TermsOfService() {
               <div>
                 <h2 className="text-2xl font-semibold text-white mb-4 flex items-center">
                   <span className="bg-violet-500/20 text-violet-400 rounded-full w-8 h-8 flex items-center justify-center mr-3">6</span>
-                  Payment Terms
+                  Fees
                 </h2>
                 <div className="text-white/80 leading-relaxed pl-11 space-y-4">
-                  <p>VoidAI offers multiple subscription plans and payment options:</p>
-                  <ul className="list-disc pl-5 space-y-2">
-                    <li><strong>Subscription Plans:</strong> We offer various subscription plans with different features and usage limits. Current pricing is available on our website</li>
-                    <li><strong>Payment Processing:</strong> Payments are processed through Stripe</li>
-                    <li><strong>Billing Cycles:</strong> Subscriptions are billed in advance on either a monthly or annual basis</li>
-                    <li><strong>Automatic Renewal:</strong> Subscriptions automatically renew unless canceled before the renewal date</li>
-                    <li><strong>Refunds:</strong> We do not provide refunds for partial subscription periods or unused credits</li>
-                    <li><strong>Price Changes:</strong> We reserve the right to change our prices at any time, these may be announced either on our site or our [Discord server](https://discord.gg/k4QGtB9kdN)</li>
-                    <li><strong>Terms of Service and Privacy Policy Changes:</strong> We reserve the right to change our Terms of Service, as well as Privacy Policy at any time</li>
-                  </ul>
-                  <p>If your payment cannot be processed, we may suspend or terminate your access to our Services. You are responsible for all applicable taxes, fees, and charges related to your use of our Services.</p>
+                  <p>VoidAI access is currently provided without subscription plans, credit purchases, or service fees. We may impose technical limits to protect service availability and prevent abuse.</p>
                 </div>
               </div>
 
@@ -237,14 +227,12 @@ export default function TermsOfService() {
                   <ul className="list-disc pl-5 space-y-2">
                     <li>You violate these Terms or our Community Guidelines</li>
                     <li>You engage in fraudulent, illegal, or abusive activities</li>
-                    <li>You fail to pay applicable fees after multiple attempts</li>
                     <li>We are required to do so by law</li>
                     <li>We decide to discontinue our Services</li>
                   </ul>
                   <p>You may terminate your account at any time by contacting us. Upon termination:</p>
                   <ul className="list-disc pl-5 space-y-2">
                     <li>You will lose access to our Services</li>
-                    <li>Any outstanding payments will be processed</li>
                     <li>We may retain certain information as required by law or for legitimate business purposes</li>
                     <li>The provisions of these Terms that by their nature should survive termination will survive</li>
                   </ul>

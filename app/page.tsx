@@ -155,8 +155,8 @@ export default function Home() {
     },
     {
       icon: <Gauge className="w-6 h-6" />,
-      title: "Clear Pricing",
-      description: "Detailed usage analytics and cost breakdowns. Straightforward monthly subscriptions with no hidden fees or surprise charges.",
+      title: "Free Forever",
+      description: "Use every available model without subscriptions, paid plans, or credit balances.",
       color: "from-pink-500 to-rose-500"
     }
   ];

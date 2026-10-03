@@ -79,7 +79,7 @@ export default function PrivacyPolicy() {
                 <div className="text-white/80 leading-relaxed pl-11 space-y-4">
                   <p>We collect several types of information from and about users of our platform, including:</p>
                   <ul className="list-disc pl-5 space-y-2">
-                    <li><strong>Personal Data:</strong> Email address and billing information necessary for account management and invoicing.</li>
+                    <li><strong>Personal Data:</strong> Email address and account information needed to provide the service.</li>
                     <li><strong>Account Credentials:</strong> Passwords are encrypted and not accessible by the VoidAI team.</li>
                     <li><strong>API Usage Data:</strong> We collect information about your API usage, including request count, timestamps, and request types.</li>
                     <li><strong>IP Addresses:</strong> We log IP addresses during registration attempts and API usage to detect and prevent potential malicious activities, spam accounts, and abuse.</li>
@@ -97,11 +97,10 @@ export default function PrivacyPolicy() {
                   <p>The information we collect is used for the following purposes:</p>
                   <ul className="list-disc pl-5 space-y-2">
                     <li><strong>Service Delivery:</strong> To provide you with access to our platform and APIs.</li>
-                    <li><strong>Billing:</strong> To charge you for premium features and manage your subscription.</li>
                     <li><strong>Communication:</strong> To notify you about changes to our service, provide customer support, or send marketing materials if you've opted in.</li>
                     <li><strong>Platform Improvement:</strong> To understand how users interact with our services and identify areas for enhancement.</li>
                     <li><strong>Security:</strong> To detect, prevent, and address technical issues, spam, or malicious activities. This includes using IP address logs to identify and block potentially malicious users.</li>
-                    <li><strong>Usage Tracking:</strong> To monitor and analyze your usage of our platform, including API request counts, types, and patterns, to optimize the service and ensure fair usage according to your plan tier.</li>
+                    <li><strong>Usage Tracking:</strong> To monitor API request counts, types, and patterns to operate and improve the service and prevent abuse.</li>
                   </ul>
                 </div>
               </div>
@@ -165,7 +164,6 @@ export default function PrivacyPolicy() {
                 <div className="text-white/80 leading-relaxed pl-11">
                   <p>We work with the following third-party services that may process your data:</p>
                   <ul className="list-disc pl-5 space-y-2">
-                    <li><strong>Payment processors:</strong> We use Stripe to handle payment transactions</li>
                     <li><strong>AI service providers:</strong> We may route AI model requests through providers such as OpenAI, Google, Anthropic, and more.</li>
                     <li><strong>Cloud infrastructure:</strong> Our services are hosted on secure cloud infrastructure</li>
                     <li><strong>Communication services:</strong> We use email services for verification and updates.</li>

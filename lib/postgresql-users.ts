@@ -450,15 +450,15 @@ export const PLAN_RPM = {
 } as const;
 
 export function getPlanCredits(plan: string): number {
-  return PLAN_CREDITS[plan as keyof typeof PLAN_CREDITS] || PLAN_CREDITS.free;
+  return Number.MAX_SAFE_INTEGER;
 }
 
 export function getPlanRPD(plan: string): number {
-  return PLAN_RPD[plan as keyof typeof PLAN_RPD] || PLAN_RPD.free;
+  return Number.MAX_SAFE_INTEGER;
 }
 
 export function getPlanRPM(plan: string): number {
-  return PLAN_RPM[plan as keyof typeof PLAN_RPM] || PLAN_RPM.free;
+  return Number.MAX_SAFE_INTEGER;
 }
 
 export async function authenticateAndEnsureV2User(email: string): Promise<{

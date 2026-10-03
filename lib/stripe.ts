@@ -4,10 +4,10 @@ import { Stripe } from 'stripe';
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 
 if (!stripeSecretKey) {
-  throw new Error('ERROR: Missing Stripe secret key. Please set STRIPE_SECRET_KEY in environment variables.');
+  console.warn('Stripe is not configured; legacy billing integrations are unavailable.');
 }
 
-const stripe = new Stripe(stripeSecretKey, {
+const stripe = new Stripe(stripeSecretKey || 'sk_test_disabled', {
   apiVersion: '2025-02-24.acacia', 
   typescript: true,
   appInfo: {

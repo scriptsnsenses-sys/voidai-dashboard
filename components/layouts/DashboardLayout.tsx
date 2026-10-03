@@ -7,12 +7,11 @@ import { useAuth } from '@/lib/auth';
 import {
   KeyIcon,
   HomeIcon,
-  GiftIcon,
   ArrowRightOnRectangleIcon,
   Bars3Icon,
   XMarkIcon,
   ChatBubbleLeftRightIcon,
-  CreditCardIcon,
+  InformationCircleIcon,
   ChartBarIcon,
   CubeIcon,
   CogIcon,
@@ -33,8 +32,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
     { name: 'API Keys', href: '/dashboard/keys', icon: KeyIcon },
     { name: 'Models', href: '/dashboard/models', icon: CubeIcon },
     { name: 'Usage', href: '/dashboard/usage', icon: ChartBarIcon },
-    { name: 'Billing', href: '/dashboard/billing', icon: CreditCardIcon },
-    { name: 'Redeem Code', href: '/dashboard/redeem', icon: GiftIcon },
+    { name: 'Free Access', href: '/dashboard/billing', icon: InformationCircleIcon },
   ];
 
   const toggleMobileMenu = () => {
@@ -126,7 +124,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
                     {currentUser?.username}
                   </div>
                   <div className="text-xs text-white/95-subtle truncate capitalize">
-                    {currentUser?.plan} Plan
+                    Free forever
                   </div>
                 </div>
                 <div className="flex items-center gap-0">
@@ -266,7 +264,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
                       {currentUser?.username}
                     </div>
                     <div className="text-sm text-white/95-subtle capitalize">
-                      {currentUser?.plan} Plan
+                      Free forever
                     </div>
                   </div>
                   <div className="flex items-center gap-2">

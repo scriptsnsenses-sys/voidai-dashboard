@@ -495,7 +495,7 @@ export default function SettingsPage() {
                 <h3 className="font-medium liquid-glass-text">Prompt Caching</h3>
                 <InformationCircleIcon className="h-4 w-4 text-gray-400" />
               </div>
-              <p className="text-sm liquid-glass-text-subtle">Save credits by caching prompts</p>
+              <p className="text-sm liquid-glass-text-subtle">Reduce token usage through prompt caching</p>
             </div>
             <div className="flex items-center gap-2">
               {saving && (

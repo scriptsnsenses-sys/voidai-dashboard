@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import DashboardLayout from '@/components/layouts/DashboardLayout';
-import { useAuth } from '@/lib/auth';
 import { getApiModels } from '@/lib/api';
 import { motion } from 'framer-motion';
 
@@ -122,7 +121,6 @@ const ENDPOINT_TYPES = {
 };
 
 export default function ModelsPage() {
-  const { currentUser } = useAuth();
   const [modelsData, setModelsData] = useState<ModelsResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -146,9 +144,6 @@ export default function ModelsPage() {
     }
   }
 
-  // Resolve user's effective plan from auth context first, then API fallback
-  const effectivePlan = (currentUser?.plan?.toLowerCase() || modelsData?.userPlan?.toLowerCase() || 'free');
-  
   // Filter models based on search query
   const filteredModels = modelsData?.data.filter(model =>
     model.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -238,18 +233,6 @@ export default function ModelsPage() {
                   {providerInfo.name}
                 </div>
               </div>
-              <div>
-                <div className="text-white/40">Cost Multiplier</div>
-                <div className="font-medium mt-1">{typeof model.multiplier === 'number' ? model.multiplier : 'N/A'}x</div>
-              </div>
-              <div>
-                <div className="text-white/40">Billing Type</div>
-                <div className="font-medium mt-1 capitalize">{typeof model.cost === 'string' ? model.cost.replace('_', ' ') : model.cost || 'N/A'}</div>
-              </div>
-              <div>
-                <div className="text-white/40">Your Plan</div>
-                <div className="font-medium mt-1 capitalize">{effectivePlan}</div>
-              </div>
               <div className="col-span-2">
                 <div className="text-white/40">Endpoints</div>
                 <div className="mt-1 flex flex-wrap gap-1">
@@ -260,18 +243,7 @@ export default function ModelsPage() {
                   ))}
                 </div>
               </div>
-              <div className="col-span-2">
-                <div className="text-white/40">Available For</div>
-                <div className="mt-1 flex flex-wrap gap-1">
-                  {model.permission.map((plan, index) => (
-                    <div key={index} className={`text-xs px-2 py-1 rounded ${
-                      plan.toLowerCase() === effectivePlan ? 'bg-green-500/20 text-green-400 border border-green-500/30' : 'bg-neutral-700/50 text-white/70'
-                    }`}>
-                      {plan}
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <div className="col-span-2 text-sm text-emerald-400">Included for every account</div>
             </div>
           </div>
         )}
@@ -286,7 +258,7 @@ export default function ModelsPage() {
           <div>
             <h1 className="text-2xl font-bold">Available Models</h1>
             <p className="text-muted-foreground mt-1">
-              Explore AI models available for your {effectivePlan} plan
+              Explore the models available to every account
             </p>
           </div>
           <div className="flex items-center gap-4">
@@ -326,7 +298,7 @@ export default function ModelsPage() {
                   {filteredModels.length} Models Available
                 </div>
                 <div className="text-sm text-white/60">
-                  Your plan: <span className="capitalize font-medium">{effectivePlan}</span>
+                  Every listed model is available to all accounts
                 </div>
               </div>
               <div className="flex gap-2">

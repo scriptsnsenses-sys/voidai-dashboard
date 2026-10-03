@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import DashboardLayout from '@/components/layouts/DashboardLayout';
 import { ShimmerButton } from '@/components/ui/ShimmerButton';
-import { useAuth } from '@/lib/auth';
 import { 
   generateApiKey, 
   getUserKeys, 
@@ -13,7 +12,6 @@ import {
   updateKeyLabel
 } from '@/lib/api';
 import { motion } from 'framer-motion';
-import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 
 type ApiKey = {
@@ -27,7 +25,6 @@ type ApiKey = {
 };
 
 export default function Keys() {
-  const { currentUser, checkPlanExpiration } = useAuth();
   const [hcaptchaToken, setHcaptchaToken] = useState<string | null>(null);
   const HCAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY || '09488f44-c57e-45f0-ad28-c17867788dc6';
   const isDevelopment = process.env.NODE_ENV === 'development';
@@ -42,28 +39,13 @@ export default function Keys() {
   const [editingLabel, setEditingLabel] = useState<string | null>(null);
   const [labelText, setLabelText] = useState('');
   const [labelLoading, setLabelLoading] = useState(false);
-  const [showPlanExpiredNotice, setShowPlanExpiredNotice] = useState(false);
   const [showHCaptchaModal, setShowHCaptchaModal] = useState(false);
   const [rerollLoading, setRerollLoading] = useState<string | null>(null);
   const [showRerollConfirm, setShowRerollConfirm] = useState<string | null>(null);
 
   useEffect(() => {
-    const initPage = async () => {
-
-      const wasExpired = await checkPlanExpiration();
-      setShowPlanExpiredNotice(wasExpired);
-
-      fetchKeys();
-
-      if (wasExpired) {
-        setTimeout(() => {
-          setShowPlanExpiredNotice(false);
-        }, 10000);
-      }
-    };
-
-    initPage();
-  }, [checkPlanExpiration]);
+    fetchKeys();
+  }, []);
 
   async function fetchKeys() {
     try {
@@ -256,24 +238,6 @@ export default function Keys() {
             Manage your API keys for accessing the voidai API
           </p>
         </div>
-
-        {showPlanExpiredNotice && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="p-4 border border-red-500/30 bg-red-500/10 rounded-lg flex items-center gap-3"
-          >
-            <ExclamationTriangleIcon className="h-6 w-6 text-red-400" />
-            <div>
-              <h3 className="font-medium text-red-400">Plan Expired</h3>
-              <p className="text-sm text-white/70">
-                Your premium plan has expired. Your account has been downgraded to the free tier, 
-                and your API keys have been removed for security purposes.
-              </p>
-            </div>
-          </motion.div>
-        )}
 
         {error && (
           <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400">

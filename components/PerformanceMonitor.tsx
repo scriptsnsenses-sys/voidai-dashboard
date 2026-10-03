@@ -10,7 +10,7 @@ export function PerformanceMonitor() {
 
     const reportWebVitals = async () => {
       try {
-        const { onCLS, onFID, onFCP, onLCP, onTTFB } = await import('web-vitals');
+        const { onCLS, onINP, onFCP, onLCP, onTTFB } = await import('web-vitals');
         
         const sendToAnalytics = ({ name, delta, value, id }: Metric) => {
           // Send to your analytics endpoint
@@ -33,7 +33,7 @@ export function PerformanceMonitor() {
         };
         
         onCLS(sendToAnalytics);
-        onFID(sendToAnalytics);
+        onINP(sendToAnalytics);
         onFCP(sendToAnalytics);
         onLCP(sendToAnalytics);
         onTTFB(sendToAnalytics);

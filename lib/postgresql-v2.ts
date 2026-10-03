@@ -1,10 +1,6 @@
 import { Pool } from 'pg';
 import { mapMongoIdToUUID, ensureIdMappingTable } from './id-mapper';
 
-if (!process.env.POSTGRESQL_URI) {
-  throw new Error('Please add your POSTGRESQL_URI to .env file');
-}
-
 const connectionString = process.env.POSTGRESQL_URI;
 
 // Connection pool for V2 PostgreSQL database
