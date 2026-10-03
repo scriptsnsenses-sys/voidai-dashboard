@@ -67,7 +67,7 @@ export default function PrivacyPolicy() {
                   Introduction
                 </h2>
                 <p className="text-white/80 leading-relaxed pl-11">
-                  This Privacy Policy explains how VoidAI ("we", "our", or "us") collects, uses, and protects your personal information when you use our AI platform and services. VoidAI is committed to ensuring that your privacy is protected. This policy applies to our website at voidai.app, our dashboard, and all related services.
+                  This policy describes the public VoidAI catalog website. It does not cover the separate VoidAI API service, which has its own data practices and service terms.
                 </p>
               </div>
 
@@ -77,12 +77,10 @@ export default function PrivacyPolicy() {
                   Information We Collect
                 </h2>
                 <div className="text-white/80 leading-relaxed pl-11 space-y-4">
-                  <p>We collect several types of information from and about users of our platform, including:</p>
+                  <p>This website does not create user accounts, store passwords, or issue or manage API keys. Our hosting provider may process standard request data, such as IP address and browser information, to deliver and protect the website.</p>
                   <ul className="list-disc pl-5 space-y-2">
-                    <li><strong>Personal Data:</strong> Email address and account information needed to provide the service.</li>
-                    <li><strong>Account Credentials:</strong> Passwords are encrypted and not accessible by the VoidAI team.</li>
-                    <li><strong>API Usage Data:</strong> We collect information about your API usage, including request count, timestamps, and request types.</li>
-                    <li><strong>IP Addresses:</strong> We log IP addresses during registration attempts and API usage to detect and prevent potential malicious activities, spam accounts, and abuse.</li>
+                    <li><strong>Catalog requests:</strong> The model catalog is fetched from the separate VoidAI API service.</li>
+                    <li><strong>External API requests:</strong> If you use the separate API, that service and its providers handle the request data under their applicable policies.</li>
                   </ul>
                 </div>
               </div>
@@ -94,13 +92,10 @@ export default function PrivacyPolicy() {
                 </h2>
                 <div className="text-white/80 leading-relaxed pl-11 space-y-4">
                   <h3 className="text-xl font-semibold mt-6 mb-3">Usage of Information</h3>
-                  <p>The information we collect is used for the following purposes:</p>
+                  <p>Website request data is used to deliver, secure, and maintain this public catalog. API requests are processed by the separate API service.</p>
                   <ul className="list-disc pl-5 space-y-2">
-                    <li><strong>Service Delivery:</strong> To provide you with access to our platform and APIs.</li>
-                    <li><strong>Communication:</strong> To notify you about changes to our service, provide customer support, or send marketing materials if you've opted in.</li>
-                    <li><strong>Platform Improvement:</strong> To understand how users interact with our services and identify areas for enhancement.</li>
-                    <li><strong>Security:</strong> To detect, prevent, and address technical issues, spam, or malicious activities. This includes using IP address logs to identify and block potentially malicious users.</li>
-                    <li><strong>Usage Tracking:</strong> To monitor API request counts, types, and patterns to operate and improve the service and prevent abuse.</li>
+                    <li><strong>Service delivery:</strong> To serve the website and retrieve the public model catalog.</li>
+                    <li><strong>Security:</strong> To protect the website from technical faults and abuse.</li>
                   </ul>
                 </div>
               </div>
@@ -111,15 +106,11 @@ export default function PrivacyPolicy() {
                   Content Moderation and Safety
                 </h2>
                 <div className="text-white/80 leading-relaxed pl-11 space-y-4">
-                  <p>VoidAI is committed to maintaining a safe and legal platform. To ensure the safety of our users and comply with legal requirements, we implement content moderation practices:</p>
+                  <p>This catalog website does not accept or process model prompts. Content moderation for model requests is the responsibility of the separate API service and its providers.</p>
                   <ul className="list-disc pl-5 space-y-2">
-                    <li><strong>Automated Content Scanning:</strong> We may automatically scan and analyze content submitted through our APIs to detect potentially harmful, illegal, or inappropriate material.</li>
-                    <li><strong>CSAM Detection:</strong> We actively monitor for and block Child Sexual Abuse Material (CSAM) and other illegal content using industry-standard detection methods.</li>
-                    <li><strong>Content Filtering:</strong> We may filter or block content that violates our Terms of Service, including but not limited to content that is harmful, abusive, harassing, or illegal.</li>
-                    <li><strong>Legal Compliance:</strong> We cooperate with law enforcement agencies when required by law and may report illegal content to appropriate authorities.</li>
-                    <li><strong>Content Retention:</strong> Content flagged for moderation purposes may be temporarily retained for review, investigation, and legal compliance purposes.</li>
+                    <li>Review the separate API service terms and provider policies before sending model requests.</li>
                   </ul>
-                  <p>By using our services, you acknowledge and consent to these content moderation practices. We reserve the right to suspend or terminate accounts that violate our content policies.</p>
+                  <p>Any content moderation for model requests is governed by the separate API service and its providers.</p>
                 </div>
               </div>
 
@@ -129,16 +120,11 @@ export default function PrivacyPolicy() {
                   Data Storage and Security
                 </h2>
                 <div className="text-white/80 leading-relaxed pl-11 space-y-4">
-                  <p>VoidAI takes data security seriously and implements appropriate measures:</p>
+                  <p>This website has no local account or API-key database. The hosting provider may process technical request logs; the separate API service controls storage and security for API requests.</p>
                   <ul className="list-disc pl-5 space-y-2">
-                    <li>All passwords are securely hashed and salted using industry-standard cryptographic functions</li>
-                    <li>We use rate limiting and DDoS protection to safeguard our infrastructure</li>
-                    <li>API keys are encrypted and stored securely</li>
-                    <li>We use MongoDB for data storage with appropriate security controls</li>
-                    <li>Access to our systems is strictly controlled and monitored</li>
-                    <li>We implement regular security audits and updates</li>
+                    <li>Do not send prompts or secrets to this catalog website.</li>
+                    <li>Consult the separate API service and model-provider policies for request retention and security details.</li>
                   </ul>
-                  <p>We retain your personal data for as long as necessary to provide you with our services. You can request deletion of your account and associated data at any time (see Your Rights and Choices).</p>
                 </div>
               </div>
 
@@ -148,9 +134,9 @@ export default function PrivacyPolicy() {
                   Cookies and Tracking Technologies
                 </h2>
                 <div className="text-white/80 leading-relaxed pl-11">
-                  <p>We use cookies and similar technologies for authentication, security, These include:</p>
+                  <p>This website does not use authentication cookies. Your browser may store preferences or technical data needed by the hosting platform.</p>
                   <ul className="list-disc pl-5 space-y-2">
-                    <li><strong>Essential cookies:</strong> Required for our site to function properly, including for authentication</li>
+                    <li><strong>Platform cookies:</strong> Any cookies required by the hosting platform to deliver the site.</li>
                   </ul>
                   <p className="mt-4">You can control cookies through your browser settings. However, disabling certain cookies may affect the functionality of our services.</p>
                 </div>
@@ -162,11 +148,10 @@ export default function PrivacyPolicy() {
                   Third-Party Services
                 </h2>
                 <div className="text-white/80 leading-relaxed pl-11">
-                  <p>We work with the following third-party services that may process your data:</p>
+                  <p>The catalog contacts the following categories of third-party services:</p>
                   <ul className="list-disc pl-5 space-y-2">
-                    <li><strong>AI service providers:</strong> We may route AI model requests through providers such as OpenAI, Google, Anthropic, and more.</li>
-                    <li><strong>Cloud infrastructure:</strong> Our services are hosted on secure cloud infrastructure</li>
-                    <li><strong>Communication services:</strong> We use email services for verification and updates.</li>
+                    <li><strong>VoidAI API:</strong> Supplies the public model catalog and separately processes model requests.</li>
+                    <li><strong>Cloud hosting:</strong> Delivers this website and may process technical request logs.</li>
                   </ul>
                   <p className="mt-4">Each of these third parties has their own privacy policies which govern how they process your data. We encourage you to review their privacy policies as well.</p>
                 </div>

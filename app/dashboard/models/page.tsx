@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import DashboardLayout from '@/components/layouts/DashboardLayout';
+import Navbar from '@/components/navbar';
 import { getApiModels } from '@/lib/api';
 import { motion } from 'framer-motion';
 
@@ -10,7 +10,6 @@ interface Model {
   object: string;
   owned_by: string;
   endpoints: string[];
-  permission: string[];
   cost: string;
   multiplier: number;
 }
@@ -18,7 +17,6 @@ interface Model {
 interface ModelsResponse {
   object: string;
   data: Model[];
-  userPlan: string;
 }
 
 interface ProviderInfo {
@@ -243,7 +241,7 @@ export default function ModelsPage() {
                   ))}
                 </div>
               </div>
-              <div className="col-span-2 text-sm text-emerald-400">Included for every account</div>
+              <div className="col-span-2 text-sm text-white/60">Access is handled by the VoidAI API service.</div>
             </div>
           </div>
         )}
@@ -252,13 +250,15 @@ export default function ModelsPage() {
   };
 
   return (
-    <DashboardLayout>
+    <div className="min-h-screen bg-zinc-950 text-white">
+      <Navbar />
+      <main className="mx-auto max-w-7xl px-4 pb-12 pt-28">
       <div className="space-y-6">
         <div className="flex justify-between items-center">
           <div>
             <h1 className="text-2xl font-bold">Available Models</h1>
             <p className="text-muted-foreground mt-1">
-              Explore the models available to every account
+              Public catalog from the VoidAI API. Model access and requests are handled by that service.
             </p>
           </div>
           <div className="flex items-center gap-4">
@@ -298,7 +298,7 @@ export default function ModelsPage() {
                   {filteredModels.length} Models Available
                 </div>
                 <div className="text-sm text-white/60">
-                  Every listed model is available to all accounts
+                  Public catalog from the VoidAI API
                 </div>
               </div>
               <div className="flex gap-2">
@@ -412,6 +412,7 @@ export default function ModelsPage() {
           </div>
         )}
       </div>
-    </DashboardLayout>
+      </main>
+    </div>
   );
 }

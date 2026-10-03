@@ -32,7 +32,6 @@ interface Model {
   object: string;
   owned_by: string;
   endpoints: string[];
-  permission: string[]; // mapped from plan_requirements
   cost: string;         // mapped from cost_type
   multiplier: number;
 }
@@ -68,7 +67,6 @@ export async function GET() {
       object: m.object,
       owned_by: m.owned_by,
       endpoints: Array.isArray(m.endpoints) ? m.endpoints : [],
-      permission: ['free'],
       cost: m.cost_type || 'per_token',
       multiplier: typeof m.multiplier === 'number' ? m.multiplier : 1,
     }));
@@ -77,7 +75,6 @@ export async function GET() {
       {
         object: external.object || 'list',
         data: internalModels,
-        userPlan: 'free',
       },
       {
         headers: {

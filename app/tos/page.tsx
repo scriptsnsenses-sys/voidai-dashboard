@@ -65,7 +65,7 @@ export default function TermsOfService() {
                 </h2>
                 <div className="text-white/80 leading-relaxed pl-11 space-y-4">
                   <p>Welcome to VoidAI. These Terms of Service ("Terms") govern your use of our website, API, platform, and all related services provided by VoidAI ("Services"). By accessing or using our Services, you agree to be bound by these Terms and our Privacy Policy.</p>
-                  <p>Please read these Terms carefully before creating an account or using our Services. If you do not agree with any part of these Terms, you must not use our Services.</p>
+                  <p>Please read these Terms before using this public catalog website. Use of the separate VoidAI API is governed by that service's terms.</p>
                 </div>
               </div>
 
@@ -92,13 +92,10 @@ export default function TermsOfService() {
                   Services Description
                 </h2>
                 <div className="text-white/80 leading-relaxed pl-11 space-y-4">
-                  <p>VoidAI provides access to various AI models through our API and platform, including but not limited to:</p>
+                  <p>This website provides a public catalog of models and endpoints published by the separate VoidAI API service. It does not serve model inference.</p>
                   <ul className="list-disc pl-5 space-y-2">
-                    <li>Text generation, completion, and editing</li>
-                    <li>Image generation and editing</li>
-                    <li>Access to large language models (LLMs) from various providers</li>
-                    <li>API endpoints for integration with your applications</li>
-                    <li>Web-based dashboard for managing your account and usage</li>
+                    <li>Public model and endpoint discovery</li>
+                    <li>Links to documentation for the separate API service</li>
                   </ul>
                   <p>We reserve the right to modify, suspend, or discontinue any aspect of our Services at any time, with or without notice. We are not liable to you or any third party for any modification, suspension, or discontinuation of our Services.</p>
                 </div>
@@ -107,19 +104,10 @@ export default function TermsOfService() {
               <div>
                 <h2 className="text-2xl font-semibold text-white mb-4 flex items-center">
                   <span className="bg-indigo-500/20 text-indigo-400 rounded-full w-8 h-8 flex items-center justify-center mr-3">4</span>
-                  User Accounts
+                  Accounts and Authentication
                 </h2>
                 <div className="text-white/80 leading-relaxed pl-11 space-y-4">
-                  <p>To access most features of our Services, you must create an account. When creating your account:</p>
-                  <ul className="list-disc pl-5 space-y-2">
-                    <li>You must provide accurate, current, and complete information</li>
-                    <li>You are responsible for maintaining the confidentiality of your account credentials</li>
-                    <li>You are responsible for all activities that occur under your account</li>
-                    <li>You must notify us immediately of any unauthorized use of your account</li>
-                    <li>You may not share your account credentials with any third party</li>
-                    <li>You may not transfer your account to another person without our prior written consent</li>
-                  </ul>
-                  <p>We reserve the right to suspend or terminate your account at our discretion if we believe you have violated these Terms or if your account shows signs of suspicious activity.</p>
+                  <p>This website does not create or manage user accounts, authenticate visitors, or issue API keys. Authentication and access requirements for model requests belong to the separate API service.</p>
                 </div>
               </div>
 
@@ -132,9 +120,8 @@ export default function TermsOfService() {
                   <p>When using our API, you agree to the following:</p>
                   <ul className="list-disc pl-5 space-y-2">
                     <li><strong>Service Limits:</strong> We may apply technical limits to protect availability and prevent abuse.</li>
-                    <li><strong>API Keys:</strong> You will keep your API keys secure and not share them with unauthorized parties</li>
-                    <li><strong>Usage Monitoring:</strong> We monitor and track API usage data including timestamps, request counts, and rate limits for each account.</li>
-                    <li><strong>IP Address Logging:</strong> We log IP addresses during registration and API usage to detect and prevent malicious activities, including spam accounts and abuse.</li>
+                    <li><strong>API access:</strong> This website does not issue or validate API keys. Follow the separate API service documentation for access requirements.</li>
+                    <li><strong>Usage limits and request handling:</strong> These are controlled by the separate API service and model providers.</li>
                     <li><strong>Prohibited Uses:</strong> You will not use our API to:
                       <ul className="list-disc pl-5 mt-2">
                         <li>Generate content that violates applicable laws or promotes illegal activities</li>
@@ -145,7 +132,7 @@ export default function TermsOfService() {
                       </ul>
                     </li>
                   </ul>
-                  <p>We monitor API usage and reserve the right to throttle, suspend, or terminate access to users who abuse our system or violate these Terms.</p>
+                  <p>Use of the separate API service may be subject to its own limits and policies.</p>
                 </div>
               </div>
 
@@ -155,7 +142,7 @@ export default function TermsOfService() {
                   Fees
                 </h2>
                 <div className="text-white/80 leading-relaxed pl-11 space-y-4">
-                  <p>VoidAI access is currently provided without subscription plans, credit purchases, or service fees. We may impose technical limits to protect service availability and prevent abuse.</p>
+                  <p>This catalog website does not collect payments. Access terms and any fees for the separate API service are set by that service and are described in its documentation.</p>
                 </div>
               </div>
 
@@ -223,19 +210,13 @@ export default function TermsOfService() {
                   Termination
                 </h2>
                 <div className="text-white/80 leading-relaxed pl-11 space-y-4">
-                  <p>Your account may be suspended or terminated under the following conditions:</p>
+                  <p>Access to this website may be restricted when necessary to protect site security or comply with law:</p>
                   <ul className="list-disc pl-5 space-y-2">
-                    <li>You violate these Terms or our Community Guidelines</li>
-                    <li>You engage in fraudulent, illegal, or abusive activities</li>
+                    <li>Use of the site creates a security or availability risk</li>
                     <li>We are required to do so by law</li>
                     <li>We decide to discontinue our Services</li>
                   </ul>
-                  <p>You may terminate your account at any time by contacting us. Upon termination:</p>
-                  <ul className="list-disc pl-5 space-y-2">
-                    <li>You will lose access to our Services</li>
-                    <li>We may retain certain information as required by law or for legitimate business purposes</li>
-                    <li>The provisions of these Terms that by their nature should survive termination will survive</li>
-                  </ul>
+                  <p>This website has no local account to terminate. Contact the separate API service about its accounts or data.</p>
                 </div>
               </div>
 
@@ -258,7 +239,7 @@ export default function TermsOfService() {
                     <li>Changes will become effective 30 days after they are posted</li>
                     <li>Your continued use of our Services after changes take effect constitutes your acceptance of the updated Terms</li>
                   </ul>
-                  <p>If you do not agree with the updated Terms, you must stop using our Services and close your account.</p>
+                  <p>If you do not agree with the updated Terms, stop using this website and the separate API service.</p>
                 </div>
               </div>
 

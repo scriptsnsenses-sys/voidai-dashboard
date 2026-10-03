@@ -19,24 +19,21 @@ export default function Pricing() {
                     className="w-full max-w-2xl text-center"
                 >
                     <p className="text-sm font-semibold uppercase tracking-wide text-emerald-400">
-                        Free forever
+                        Separate API service
                     </p>
                     <h1 className="mt-3 text-4xl font-bold leading-tight text-white md:text-5xl">
-                        Every model. No plans. No payments.
+                        Model access lives outside this site.
                     </h1>
                     <p className="mx-auto mt-5 max-w-xl text-lg text-muted-foreground">
-                        Create an account to use VoidAI. There are no subscriptions, credit balances, or paid tiers.
+                        This website publishes a model catalog only. The separate VoidAI API service manages inference, access requirements, and any applicable pricing.
                     </p>
                     <div className="mt-8 flex flex-wrap justify-center gap-4">
-                        <Link href="/register">
-                            <ShimmerButton>Get started</ShimmerButton>
+                        <Link href="/models">
+                            <ShimmerButton>Browse models</ShimmerButton>
                         </Link>
-                        <Link
-                            href="/dashboard/models"
-                            className="rounded-lg border border-white/15 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-white/5"
-                        >
-                            Browse models
-                        </Link>
+                        <a href="https://docs.voidai.app" target="_blank" rel="noopener noreferrer" className="rounded-lg border border-white/15 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-white/5">
+                            API documentation
+                        </a>
                     </div>
                 </motion.section>
             </main>

@@ -7,12 +7,7 @@ export async function POST(request: NextRequest) {
     // Extract web vitals data
     const { metric, value, id, pathname } = body;
     
-    // In production, you would typically:
-    // 1. Store this data in a database
-    // 2. Send it to an analytics service (e.g., Google Analytics, Vercel Analytics)
-    // 3. Process it for performance monitoring
-    
-    // For now, we'll just log it in development
+    // Keep telemetry ephemeral; this endpoint does not persist visitor data.
     if (process.env.NODE_ENV === 'development') {
       console.log('[Analytics] Web Vital received:', {
         metric,

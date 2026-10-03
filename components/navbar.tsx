@@ -3,11 +3,9 @@
 import Link from "next/link";
 import { ModernButton } from "@/components/ui/modern-button";
 import { motion } from "framer-motion";
-import { useAuth } from "@/lib/auth";
 import { useState, useEffect } from "react";
 
 export default function Navbar() {
-  const { currentUser } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -51,9 +49,9 @@ export default function Navbar() {
 
         {}
         <nav className="hidden md:flex items-center justify-center absolute left-0 right-0 mx-auto w-fit space-x-8 text-white/80 text-sm pointer-events-auto">
-          {["Home", "Pricing", "Docs", currentUser && "Dashboard"].filter(Boolean).map((item, index) => {
+          {["Home", "Models", "API Access", "Docs"].map((item, index) => {
             if (!item) return null;
-            const href = item === "Home" ? "/" : item === "Docs" ? "https://docs.voidai.app" : `/${item.toLowerCase()}`;
+            const href = item === "Home" ? "/" : item === "Docs" ? "https://docs.voidai.app" : item === "API Access" ? "/pricing" : `/${item.toLowerCase()}`;
             const isExternal = item === "Docs";
 
             return (
@@ -107,22 +105,9 @@ export default function Navbar() {
 
         {}
         <div className="items-center gap-3 hidden md:flex">
-          {currentUser ? (
-            <Link href="/dashboard">
-              <ModernButton size="md">
-                Dashboard
-              </ModernButton>
-            </Link>
-          ) : (
-            <>
-              <Link href="/login">
-                <ModernButton variant="ghost" size="md">Login</ModernButton>
-              </Link>
-              <Link href="/register">
-                <ModernButton variant="secondary" size="md">Get Started</ModernButton>
-              </Link>
-            </>
-          )}
+          <Link href="/models">
+            <ModernButton size="md">Browse models</ModernButton>
+          </Link>
         </div>
       </div>
 
@@ -142,11 +127,18 @@ export default function Navbar() {
               Home
             </Link>
             <Link 
+              href="/models"
+              className="py-2 px-4 hover:bg-white/5 rounded-lg transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Models
+            </Link>
+            <Link
               href="/pricing" 
               className="py-2 px-4 hover:bg-white/5 rounded-lg transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Pricing
+              API access
             </Link>
             <a 
               href="https://docs.voidai.app" 
@@ -157,50 +149,12 @@ export default function Navbar() {
             >
               Docs
             </a>
-            {currentUser && (
-              <Link 
-                href="/dashboard" 
-                className="py-2 px-4 hover:bg-white/5 rounded-lg transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Dashboard
-              </Link>
-            )}
           </nav>
 
           <div className="pt-4 border-t border-white/10 flex flex-col space-y-2">
-            {currentUser ? (
-              <Link
-                href="/dashboard"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full"
-              >
-                <ModernButton className="w-full">
-                  Dashboard
-                </ModernButton>
-              </Link>
-            ) : (
-              <>
-                <Link
-                  href="/login"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="w-full"
-                >
-                  <ModernButton variant="ghost" className="w-full">
-                    Login
-                  </ModernButton>
-                </Link>
-                <Link
-                  href="/register"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="w-full"
-                >
-                  <ModernButton variant="secondary" className="w-full">
-                    Get Started
-                  </ModernButton>
-                </Link>
-              </>
-            )}
+            <Link href="/models" onClick={() => setMobileMenuOpen(false)} className="w-full">
+              <ModernButton className="w-full">Browse models</ModernButton>
+            </Link>
           </div>
         </motion.div>
       )}

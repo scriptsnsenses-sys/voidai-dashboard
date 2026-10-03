@@ -22,7 +22,6 @@ const nextConfig: NextConfig = {
       '@heroicons/react',
       'lucide-react',
       'framer-motion',
-      'recharts',
       '@radix-ui/react-select',
       '@radix-ui/react-tabs'
     ],

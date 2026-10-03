@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Providers } from "./providers";
 import ErrorBoundary from "@/components/ErrorBoundary";
 
 const geistSans = Geist({
@@ -27,11 +26,11 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "VoidAI - Unified AI API",
+    default: "VoidAI Model Catalog",
     template: "%s | VoidAI",
   },
   description:
-    "Access advanced AI models through one reliable API. GPT-5.1, Claude 4.5, Gemini 3, and more. Designed for stable performance, fast responses, and consistent results.",
+    "Browse the public model catalog published by the VoidAI API service.",
   keywords: [
     "AI API",
     "GPT",
@@ -52,9 +51,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://voidai.app",
     siteName: "VoidAI",
-    title: "VoidAI - Unified AI API",
+    title: "VoidAI Model Catalog",
     description:
-      "Access advanced AI models through one reliable API. GPT-5.1, Claude 4.5, Gemini 3, and more. Designed for stable performance, fast responses, and consistent results.",
+      "Browse the public model catalog published by the VoidAI API service.",
     images: [
       {
         url: "https://voidai.app/voidai.png",
@@ -69,9 +68,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@voidai",
     creator: "@voidai",
-    title: "VoidAI - Unified AI API",
+    title: "VoidAI Model Catalog",
     description:
-      "Access advanced AI models through one reliable API. GPT-5.1, Claude 4.5, Gemini 3, and more. Built for stability, speed, and clarity.",
+      "Browse the public model catalog published by the VoidAI API service.",
     images: {
       url: "https://voidai.app/voidai.png",
       alt: "VoidAI - Unified AI API",
@@ -116,7 +115,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground bg-gradient-radial`}
       >
         <ErrorBoundary>
-          <Providers>{children}</Providers>
+          {children}
         </ErrorBoundary>
       </body>
     </html>
