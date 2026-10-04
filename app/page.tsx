@@ -92,7 +92,7 @@ export default function Home() {
               <p className="mt-2 break-all text-white/75">https://voidai-backend.onrender.com/v1/models</p>
             </div>
             <p className="mt-5 text-sm leading-6 text-white/55">
-              This site displays the model catalog. Requests to use models go to the separate API service and follow its configuration and policies.
+              Use this site&apos;s OpenAI-compatible `/v1/chat/completions` route. Responses, including backend errors, are passed through from the separate API service.
             </p>
           </motion.aside>
         </section>
