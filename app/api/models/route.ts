@@ -39,7 +39,7 @@ interface Model {
 export async function GET() {
   try {
     // Fetch all models from VoidAI API (no auth required)
-    const response = await fetch('https://api.voidai.app/v1/models', {
+    const response = await fetch('https://voidai-backend.onrender.com/v1/models', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

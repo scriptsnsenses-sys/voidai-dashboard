@@ -89,7 +89,7 @@ export default function Home() {
             </div>
             <div className="mt-6 rounded-md border border-white/10 bg-zinc-950/80 p-4 font-mono text-sm">
               <p className="text-cyan-200">GET</p>
-              <p className="mt-2 break-all text-white/75">https://api.voidai.app/v1/models</p>
+              <p className="mt-2 break-all text-white/75">https://voidai-backend.onrender.com/v1/models</p>
             </div>
             <p className="mt-5 text-sm leading-6 text-white/55">
               This site displays the model catalog. Requests to use models go to the separate API service and follow its configuration and policies.
